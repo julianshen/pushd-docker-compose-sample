@@ -1,0 +1,17 @@
+pushd:
+    image: amsdard/pushd:latest
+    ports:
+      - "8081:8081"
+    environment:
+      - REDIS_PORT=6379
+      - REDIS_HOST=redis
+      - GCM_KEY=$GCM_KEY
+      - APNS_CERT=$APNS_CERT
+      - APNS_KEY=$APNS_KEY
+      - WNS_ID=$APNS_KEY
+      - WNS_SECRET=$WNS_SECRET
+      - PUSHD_LOGGING_LEVEL=$PUSHD_LOGGING_LEVEL
+    links:
+      - redis
+redis:
+    image: redis
